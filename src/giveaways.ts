@@ -36,3 +36,18 @@ export const createGiveaway = (): void => {
 
   console.log("El sorteo se ha creado correctamente");
 };
+
+export const listGiveaways = (): void => {
+  if (programData.giveaways.length > 0) {
+    console.log(
+      `Éstos son los ${programData.giveaways.length} sorteos disponibles:`
+    );
+
+    for (let counter = 0; counter < programData.giveaways.length; counter++) {
+      const giveaway = programData.giveaways[counter];
+      console.log(`${counter + 1}. Sorteo de un ${giveaway.name}`);
+    }
+  } else {
+    console.log("No hay sorteos disponibles en este momento");
+  }
+};
