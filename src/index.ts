@@ -9,6 +9,6 @@ const password = askUserHidden("Introduce tu contraseña: ");
 
 loadData();
 
-// loginUser(email, password);
+loginUser(email, password);
 
 printMainMenu();

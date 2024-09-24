@@ -79,3 +79,35 @@ export const enterGiveaway = (giveawayNumberToSign: number): void => {
   }
   saveData();
 };
+
+export const listUserGiveaways = (): void => {
+  const userEmail = programData.userEmail;
+  const userGiveaways: Giveaway[] = [];
+
+  programData.giveaways.forEach((giveaway) => {
+    const isUserInGiveaway = giveaway.participants.some(
+      (participant) => participant.email === userEmail
+    );
+
+    if (isUserInGiveaway) {
+      userGiveaways.push(giveaway);
+    }
+  });
+
+  if (userGiveaways.length === 0) {
+    console.log("No estás inscrito en ningún sorteo.");
+  } else {
+    console.log(
+      `Estás inscrito en los siguientes ${userGiveaways.length} sorteos`
+    );
+
+    for (let index = 0; index < userGiveaways.length; index++) {
+      const giveaway = userGiveaways[index];
+      console.log(
+        `${index + 1}. Sorteo de un ${giveaway.name} en ${
+          giveaway.socialNetwork
+        }`
+      );
+    }
+  }
+};
