@@ -51,3 +51,13 @@ export const listGiveaways = (): void => {
     console.log("No hay sorteos disponibles en este momento");
   }
 };
+
+export const deleteGiveaway = (positionToDelete: number): void => {
+  if (positionToDelete <= programData.giveaways.length) {
+    programData.giveaways.splice(positionToDelete, 1);
+    console.log("Has eliminado el sorteo con existo");
+  } else {
+    console.log("No hay ningún sorteo en la posición indicada");
+  }
+  saveData();
+};
