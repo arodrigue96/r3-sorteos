@@ -70,9 +70,10 @@ export const enterGiveaway = (giveawayNumberToSign: number): void => {
     password: "",
     isAdmin: programData.isAdmin,
   };
+
   if (giveawayNumberToSign <= programData.giveaways.length) {
-    programData.giveaways[giveawayNumberToSign].participants.push(userData),
-      console.log("¡Te has inscrito al sorteo correctamente!");
+    programData.giveaways[giveawayNumberToSign - 1].participants.push(userData);
+    console.log("¡Te has inscrito al sorteo correctamente!");
   } else {
     console.log(
       "El sorteo no existe, dime otro número de sorteo para inscribirte"
