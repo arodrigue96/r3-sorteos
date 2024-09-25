@@ -1,5 +1,5 @@
 import { askUser, askUserHidden } from "./askUser.js";
-// import { loginUser } from "./giveaways.js";
+import { loginUser } from "./giveaways.js";
 
 import { loadData } from "./storage.js";
 import { printMainMenu } from "./ui.js";

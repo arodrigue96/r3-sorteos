@@ -32,6 +32,7 @@ export const createGiveaway = (): void => {
   };
 
   programData.giveaways.push(giveawayData);
+
   saveData();
 
   console.log("El sorteo se ha creado correctamente");
@@ -54,7 +55,7 @@ export const listGiveaways = (): void => {
 
 export const deleteGiveaway = (positionToDelete: number): void => {
   if (positionToDelete <= programData.giveaways.length) {
-    programData.giveaways.splice(positionToDelete, 1);
+    programData.giveaways.splice(positionToDelete - 1, 1);
     console.log("Has eliminado el sorteo con existo");
   } else {
     console.log("No hay ningún sorteo en la posición indicada");
