@@ -23,11 +23,11 @@ export const loginUser = (email: string, password: string): void => {
 };
 
 export const createGiveaway = (): void => {
-  const giveawayInfo = askUserNewGiveawayData();
+  const askAdminGiveawayInfo = askUserNewGiveawayData();
 
   const giveawayData: Giveaway = {
-    name: giveawayInfo.giveawayName,
-    socialNetwork: giveawayInfo.giveawaySocialNetwork,
+    name: askAdminGiveawayInfo.giveawayName,
+    socialNetwork: askAdminGiveawayInfo.giveawaySocialNetwork,
     participants: [],
   };
 
@@ -103,10 +103,14 @@ export const listUserGiveaways = (): void => {
       `\nEstás inscrito en los siguientes ${userGiveaways.length} sorteos:\n`
     );
 
-    for (let index = 0; index < userGiveaways.length; index++) {
-      const giveaway = userGiveaways[index];
+    for (
+      let userGiveawayPosition = 0;
+      userGiveawayPosition < userGiveaways.length;
+      userGiveawayPosition++
+    ) {
+      const giveaway = userGiveaways[userGiveawayPosition];
       console.log(
-        `${index + 1}. Sorteo de un ${giveaway.name} en ${
+        `${userGiveawayPosition + 1}. Sorteo de un ${giveaway.name} en ${
           giveaway.socialNetwork
         }`
       );
