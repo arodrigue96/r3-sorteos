@@ -10,7 +10,7 @@ export const loginUser = (email: string, password: string): void => {
   );
 
   if (!userLoginData) {
-    console.log("Error: Usuario o contraseña incorrectos");
+    console.log("\nError: Usuario o contraseña incorrectos");
     process.exit(1);
   }
 
@@ -19,7 +19,7 @@ export const loginUser = (email: string, password: string): void => {
 
   saveData();
 
-  console.log(`Hola, ${userLoginData.name}!`);
+  console.log(`\nHola, ${userLoginData.name}!`);
 };
 
 export const createGiveaway = (): void => {
@@ -35,13 +35,13 @@ export const createGiveaway = (): void => {
 
   saveData();
 
-  console.log("El sorteo se ha creado correctamente");
+  console.log("\nEl sorteo se ha creado correctamente");
 };
 
 export const listGiveaways = (): void => {
   if (programData.giveaways.length > 0) {
     console.log(
-      `Éstos son los ${programData.giveaways.length} sorteos disponibles:`
+      `\nÉstos son los ${programData.giveaways.length} sorteos disponibles:\n`
     );
 
     for (let counter = 0; counter < programData.giveaways.length; counter++) {
@@ -49,16 +49,16 @@ export const listGiveaways = (): void => {
       console.log(`${counter + 1}. Sorteo de un ${giveaway.name}`);
     }
   } else {
-    console.log("No hay sorteos disponibles en este momento");
+    console.log("\nNo hay sorteos disponibles en este momento");
   }
 };
 
 export const deleteGiveaway = (positionToDelete: number): void => {
   if (positionToDelete <= programData.giveaways.length) {
     programData.giveaways.splice(positionToDelete - 1, 1);
-    console.log("Has eliminado el sorteo con existo");
+    console.log("\n¡Has eliminado el sorteo con existo!");
   } else {
-    console.log("No hay ningún sorteo en la posición indicada");
+    console.log("\nNo hay ningún sorteo en la posición indicada.");
   }
   saveData();
 };
@@ -73,10 +73,10 @@ export const enterGiveaway = (giveawayNumberToSign: number): void => {
 
   if (giveawayNumberToSign <= programData.giveaways.length) {
     programData.giveaways[giveawayNumberToSign - 1].participants.push(userData);
-    console.log("¡Te has inscrito al sorteo correctamente!");
+    console.log("\n¡Te has inscrito al sorteo correctamente!");
   } else {
     console.log(
-      "El sorteo no existe, dime otro número de sorteo para inscribirte"
+      "\nEl sorteo no existe, dime otro número de sorteo para inscribirte"
     );
   }
   saveData();
@@ -97,10 +97,10 @@ export const listUserGiveaways = (): void => {
   });
 
   if (userGiveaways.length === 0) {
-    console.log("No estás inscrito en ningún sorteo.");
+    console.log("\nNo estás inscrito en ningún sorteo.");
   } else {
     console.log(
-      `Estás inscrito en los siguientes ${userGiveaways.length} sorteos`
+      `\nEstás inscrito en los siguientes ${userGiveaways.length} sorteos:\n`
     );
 
     for (let index = 0; index < userGiveaways.length; index++) {
